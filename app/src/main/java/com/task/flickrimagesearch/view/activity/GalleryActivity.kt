@@ -70,6 +70,7 @@ class GalleryActivity : AppCompatActivity(), GalleryContract.View {
         searchView.queryHint = getString(R.string.abc_search_hint)
         searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
+                no_result_text.visibility = View.GONE
                 galleryPresenter.searchPhotos(query)
                 return false
             }
