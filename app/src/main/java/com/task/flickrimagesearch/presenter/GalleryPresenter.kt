@@ -13,7 +13,7 @@ import io.reactivex.schedulers.Schedulers
 class GalleryPresenter(private val view: GalleryContract.View?) : GalleryContract.Presenter {
     private var compositeDisposable: CompositeDisposable = CompositeDisposable()
     private var disposable: Disposable? = null
-    private var photoList: MutableList<PhotoItems> = mutableListOf()
+    internal var photoList: MutableList<PhotoItems> = mutableListOf()
     internal var isLastPage = false
     internal var isLoading = false
     internal var currentPage: Int = 1
@@ -84,7 +84,12 @@ class GalleryPresenter(private val view: GalleryContract.View?) : GalleryContrac
     }
 
     override fun onImageClicked(position: Int) {
-        view?.launchImageViewActivity(AppUtils.getFlickrImageLink(photoList[position].id,
-            photoList[position].secret, photoList[position].server, photoList[position].farm))
+        if (position < photoList.size)
+            view?.launchImageViewActivity(AppUtils.getFlickrImageLink(photoList[position].id,
+                photoList[position].secret, photoList[position].server, photoList[position].farm))
+    }
+
+    fun getReponseList(): MutableList<PhotoItems> {
+        return photoList
     }
 }
