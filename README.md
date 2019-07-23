@@ -18,3 +18,6 @@ For loading data asyncronus used RX Java and Retrofit
 Once done with data we are showing in recycler view with three coloums
 
 
+ImageViewsActivity - Used to diaplay image in full screen 
+
+
