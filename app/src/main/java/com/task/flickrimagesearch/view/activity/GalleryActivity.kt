@@ -38,6 +38,8 @@ class GalleryActivity : AppCompatActivity(), GalleryContract.View {
         toolbar.setTitleTextColor(Color.WHITE)
         initRecyclerView()
         galleryPresenter = GalleryPresenter(this)
+        no_result_text.visibility = View.VISIBLE
+        no_result_text.text = getString(R.string.search_text)
     }
 
     private fun initRecyclerView() {
